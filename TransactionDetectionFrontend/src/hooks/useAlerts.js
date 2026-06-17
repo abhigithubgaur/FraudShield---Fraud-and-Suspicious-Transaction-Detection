@@ -8,7 +8,7 @@ const useAlerts = (userId) => {
     if (!userId) return;
 
     const eventSource = new EventSource(
-      `${process.env.EVENT_URL}/api/alerts/subscribe/${userId}`
+      `${import.meta.env.VITE_API_URL}/api/alerts/subscribe/${userId}`
     );
 
     eventSource.addEventListener("INIT", (event) => {
