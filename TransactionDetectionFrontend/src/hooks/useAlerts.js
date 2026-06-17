@@ -8,7 +8,7 @@ const useAlerts = (userId) => {
     if (!userId) return;
 
     const eventSource = new EventSource(
-      `http://localhost:8080/api/alerts/subscribe/${userId}`
+      `${process.env.EVENT_URL}/api/alerts/subscribe/${userId}`
     );
 
     eventSource.addEventListener("INIT", (event) => {
