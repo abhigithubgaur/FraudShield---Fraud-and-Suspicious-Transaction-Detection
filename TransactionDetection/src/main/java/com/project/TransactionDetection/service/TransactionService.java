@@ -51,7 +51,7 @@ public class TransactionService {
         transaction.setFraudScore(computedScore);
 
 
-        if (computedScore >= 0.85) {
+        if (computedScore >= 0.75) {
 
             transaction.setStatus(TransactionStatus.REJECTED);
 
