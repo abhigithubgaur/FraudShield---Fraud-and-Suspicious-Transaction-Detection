@@ -13,6 +13,15 @@ public class OtpService {
     @Autowired
     private TransactionOtpRepository otpRepository;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private EmailService emailService;
+
     public String generateAndSaveOtp(Long transactionId) {
 
         String otp = String.format("%06d", new Random().nextInt(999999));
@@ -28,6 +37,14 @@ public class OtpService {
                 .build();
 
         otpRepository.save(transactionOtp);
+
+        Transaction transaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Transaction not found: " + transactionId));
+
+        User sender = userRepository.findById(transaction.getSenderId())
+                .orElseThrow(() -> new RuntimeException("User not found for senderId: " + transaction.getSenderId()));
+
+        emailService.sendOtpEmail(sender.getEmail(), otp);
 
         System.out.println("⚠️ [SECURITY ALERT] OTP for Transaction ID " + transactionId + " is: " + otp);
 
