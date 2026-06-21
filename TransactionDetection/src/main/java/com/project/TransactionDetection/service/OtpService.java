@@ -1,6 +1,8 @@
 package com.project.TransactionDetection.service;
 
 import com.project.TransactionDetection.entity.TransactionOtp;
+import com.project.TransactionDetection.entity.User;
+import com.project.TransactionDetection.entity.Transaction;
 import com.project.TransactionDetection.repository.TransactionOtpRepository;
 import com.project.TransactionDetection.repository.UserRepository;
 import com.project.TransactionDetection.repository.TransactionRepository;
