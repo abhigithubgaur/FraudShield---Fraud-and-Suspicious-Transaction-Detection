@@ -2,6 +2,9 @@ package com.project.TransactionDetection.service;
 
 import com.project.TransactionDetection.entity.TransactionOtp;
 import com.project.TransactionDetection.repository.TransactionOtpRepository;
+import com.project.TransactionDetection.repository.UserRepository;
+import com.project.TransactionDetection.repository.TransactionRepository;
+import com.project.TransactionDetection.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
